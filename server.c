@@ -13,9 +13,11 @@ void error(const char *msg)
 }
 
 void run(char* host, int port) {
-    int serverSockFd, clientSockFd;
+    int serverSockFd, recvLen;
     socklen_t clientLen;
-    if ((serverSockFd=socket(AF_INET, SOCK_STREAM, 0))<0){
+    char recv_data[1024];
+    char *flag="Abbflagis{lz4r4TnD}\n";
+    if ((serverSockFd=socket(AF_INET, SOCK_DGRAM, 0))<0){
         error("ERROR opening socket");
     }
     struct sockaddr_in serverAddr, clientAddr;
@@ -25,14 +27,12 @@ void run(char* host, int port) {
     if (bind(serverSockFd, (struct sockaddr *) &serverAddr, sizeof(serverAddr))<0){
         error("ERROR on binding");
     }
-    listen(serverSockFd,50);
     while(1){
         clientLen=sizeof(clientAddr);
-        if ((clientSockFd=accept(serverSockFd, (struct sockaddr *) &clientAddr, &clientLen))<0){
+        if ((recvLen=recvfrom(serverSockFd, recv_data, 1024, 0, (struct sockaddr *) &clientAddr, &clientLen))<0){
             error("ERROR on accept");
         }
-        send(clientSockFd, "Abbflagis{lz4r4TnD}\n", 19, 0);
-        close(clientSockFd);
+        sendto(serverSockFd, (char *)flag, strlen(flag), 0, (struct sockaddr *) &clientAddr, clientLen);
     }
     close(serverSockFd);
 }

@@ -37,12 +37,12 @@
             "environment": [
                 {
                     "name": "PATH",
-                    "value": "%PATH%;C:\\cygwin64\\bin"
+                    "value": "%PATH%;D:\\cygwin64\\bin"
                 }
             ],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:\\cygwin64\\bin\\gdb.exe",
+            "miDebuggerPath": "D:\\cygwin64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -50,7 +50,6 @@
                     "ignoreFailures": true
                 }
             ],
-            "logging": { "engineLogging": true }, //optional
             "preLaunchTask": "gcc.exe build active file"
         }
     ]
