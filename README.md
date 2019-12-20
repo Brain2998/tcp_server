@@ -1,4 +1,4 @@
-# tcp_server
+# c_server
 TCP server exmaple on C. UDP is on branch "udp_server"
 
 Run in docker:\
