@@ -1,4 +1,4 @@
-# tcp_server
+# c_server
 UDP Server on C. TCP is on branch "master"
 
 Run in docker:\
